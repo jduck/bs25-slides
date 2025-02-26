@@ -1,0 +1,245 @@
+/**
+ * BOOTSTRAP25 theme for reveal.js. Based on the 'White theme'
+ *
+ * by Joshua J. Drake (jduck) - 2025 Feb 26
+ *
+ * Copyright (C) 2015 Hakim El Hattab, http://hakim.se
+ */
+
+
+// Default mixins and settings -----------------
+@import "../template/mixins";
+@import "../template/settings";
+// ---------------------------------------------
+
+
+// Include theme-specific fonts
+//@import url(../../lib/font/font.css);
+
+
+// Override theme settings (see ../template/settings.scss)
+$backgroundColor: #111827;
+
+$mainColor: #bbbbbb;
+$headingColor: #f0f0f0;
+
+$mainFontSize: 38px;
+$mainFont: "Exo 2", Tahoma, Arial, sans-serif;
+$headingFont: "Exo 2", Tahoma, Arial, sans-serif;
+$headingTextShadow: none;
+$headingLetterSpacing: normal;
+$headingTextTransform: none;
+$headingFontWeight: 600;
+$linkColor: #0088cc;
+$linkColorHover: lighten( $linkColor, 15% );
+$selectionBackgroundColor: lighten( $linkColor, 25% );
+
+$heading1Size: 2.25em;
+$heading2Size: 1.5em;
+$heading3Size: 1.3em;
+$heading4Size: 1.0em;
+
+/*
+section.has-dark-background {
+	&, h1, h2, h3, h4, h5, h6 {
+		color: #fff;
+	}
+}
+*/
+
+
+// Theme template ------------------------------
+@import "../template/bs25-theme";
+// ---------------------------------------------
+
+// just for testing...
+//.reveal .slides { border: 2px solid white }
+
+// keep slide content aligned left (even when printing)
+.reveal .slides { text-align: left }
+
+// this enables making divs that take the entire height inside
+.reveal .slides > section {
+  height: 100%;
+  padding: 0px;
+}
+
+// Force background color (even when printing)
+.reveal .slides .slide-background-content {
+  background: $backgroundColor;
+}
+
+// don't pad the top..
+.reveal .slides > section > section { padding: 0px 0px }
+
+// title slide magic
+.reveal .preso-title { height: 500px; }
+.reveal .preso-title h1 { text-align: center; }
+.reveal .preso-title-line {
+  height: 2px;
+  background: $mainColor;
+  background-size: 100%;
+  margin: 10px
+}
+.reveal .preso-title-darkpt {
+  height: 114px;
+  background: left / contain url('/lib/img/b25-chrome-logo.svg') no-repeat;
+}
+// Can't drop shadow for backgorund image :-/
+//.reveal .preso-title-darkpt img { filter: drop-shadow(5px 5px 5px black); }
+
+// chapter negative special styles
+.reveal .preso-title-deetz {
+  position: relative;
+  margin: 10px;
+  font-weight: bold;
+  float: right;
+  font-size: 0.66em;
+  text-align: left;
+}
+.reveal .preso-title-deetz sup { font-size: 0.5em }
+
+// about slide images
+.reveal .about-logos {
+  height: 300px;
+  text-align: center;
+}
+.reveal .about-logos img {
+  vertical-align: middle;
+  filter: drop-shadow(5px 5px 5px black);
+}
+
+// content slide
+.reveal .content { text-align: left; }
+.reveal .content h1 { font-size: 1.5em }
+.reveal .content h2 { font-size: 1.25em }
+//.reveal .content b,strong { color: white }
+
+// footer on all slides (except first)
+.reveal .footer {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  background: $mainColor;
+  height: 48px;
+  width: 100%;
+  z-index: 15;
+  display: none;
+}
+.reveal .footer-title {
+  float: left;
+  text-align: center;
+  color: $backgroundColor;
+  display: inline;
+  width: 72%;
+  height: 44px;
+  font-size: 0.44em;
+  line-height: 16px;
+  font-weight: bold;
+}
+.reveal .footer-line {
+  height: 4px;
+  background: black;
+  background-size: 100% 4px;
+}
+.reveal .footer-logo1 {
+  float: left;
+  background: center / contain url('/lib/img/b25-chrome-logo.svg') no-repeat;
+  display: inline;
+  width: 10%;
+  margin-left: 20px;
+  height: 40px;
+}
+.reveal .footer-logo2 {
+  float: left;
+  background: center / contain url('/lib/img/magsec.png') no-repeat;
+  width: 13%;
+  height: 40px;
+  position: absolute;
+  left: 80%;
+}
+.reveal .slide-number {
+  font-size: 0.5em;
+  font-weight: bold;
+  color: $headingColor;
+}
+
+// chapter title slides
+.reveal .ctitle h1 {
+  padding-top: 200px;
+  margin-left: 40px
+}
+.reveal .ctitle-line {
+  height: 2px;
+  background: black;
+  background-size: 100% 11px;
+}
+.reveal .ctitle h2 {
+  height: 144px;
+  background: white;
+  color: #688099;
+  line-height: 144px;
+  padding-left: 40px;
+}
+.reveal .ctitle p { display: none }
+
+// cheri project title slide
+.reveal .cheri-title {
+  float: right;
+  display: block;
+  height: 200px;
+  width: 200px;
+  background: center / contain url('/lib/img/cherries.svg') no-repeat;
+  //margin-top: -200px;
+  margin-right: 50px;
+}
+
+// test results slide
+.reveal .shell-log {
+  background: black;
+  color: #b0b0b0;
+}
+
+// q and a slide
+.reveal .qna h2 { height: 120px }
+.reveal .contactinfo {
+  text-align: left;
+  font-size: 20pt
+}
+
+// the end
+.reveal .fin {
+  text-align: center;
+  height: 700px;
+  line-height: 700px;
+  font-size: 70px;
+  font-weight: bold
+}
+
+// code blocks
+.reveal pre { width: 100% }
+.reveal code { width: 100% }
+
+// footnotes
+.reveal .footnote {
+  position: absolute;
+  margin-top: 500px;
+  font-size: 0.60em;
+}
+@media print {
+  .reveal .footnote { position: absolute;
+  margin-top: 525px;
+  font-size: 0.60em }
+}
+
+// colory things
+.reveal .danger {
+  color: #fcb335;
+  font-weight: bold
+}
+
+// quotes in the slides...
+.reveal blockquote { width: 90% }
+
+// red box around key line of output
+.reveal .redbox { border: 4px solid red }

@@ -3,9 +3,9 @@
  * presentations to PDF.
  *
  * https://revealjs.com/pdf-export/
- */
+ **/
 
-html.reveal-print {
+html.print-pdf {
 	* {
 		-webkit-print-color-adjust: exact;
 	}
@@ -36,6 +36,7 @@ html.reveal-print {
 
 	.reveal pre code {
 		overflow: hidden !important;
+		font-family: Courier, 'Courier New', monospace !important;
 	}
 
 	.reveal {
@@ -66,12 +67,8 @@ html.reveal-print {
 		position: relative;
 		overflow: hidden;
 		z-index: 1;
-
+        background: #111827;
 		page-break-after: always;
-	}
-
-	.reveal .slides .pdf-page:last-of-type {
-		page-break-after: avoid;
 	}
 
 	.reveal .slides section {
@@ -149,7 +146,6 @@ html.reveal-print {
 		display: block;
 		position: absolute;
 		font-size: 14px;
-		visibility: visible;
 	}
 
 	/* This accessibility tool is not useful in PDF and breaks it visually */

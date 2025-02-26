@@ -4,11 +4,12 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>Musing from Decades of Linux Kernel Security Research</title>
+		<meta name="description" content="Musing from Decades of Linux Kernel Security Research">
 
 		<link rel="stylesheet" href="dist/reset.css">
 		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/black.css">
+		<link rel="stylesheet" href="dist/theme/bs25.css">
 
 		<!-- Theme used for syntax highlighted code -->
 		<link rel="stylesheet" href="plugin/highlight/monokai.css">
@@ -16,12 +17,35 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+                <!-- Chapter Negative -->
+                <section class="title" data-background="#111827">
+                    <div class="preso-title">
+                      <h1>Musing from Decades of Linux Kernel Security Research</h1>
+                    </div>
+                    <div class="preso-title-line"></div>
+                    <div class="preso-title-darkpt">
+                        <div class="preso-title-deetz">
+                            Joshua "jduck" Drake<br />
+                            March 22<sup>nd</sup>, 2024<br />
+                            BOOTSTRAP25<br />
+                        </div>
+                    </div>
+                </section>
+
+				<section class="content"
+                         data-markdown="slides.md"
+                         data-separator="^\n---\n\n"
+                         data-separator-vertical="^\n\n"
+                         data-separator-notes="^Note:"
+                         data-background="#111827"
+                         data-charset="iso-8859-15">
+				</section>
 			</div>
 		</div>
 
 		<script src="dist/reveal.js"></script>
+		<script src="js/footer.js"></script>
+
 		<script src="plugin/notes/notes.js"></script>
 		<script src="plugin/markdown/markdown.js"></script>
 		<script src="plugin/highlight/highlight.js"></script>
@@ -31,6 +55,15 @@
 			// - https://revealjs.com/config/
 			Reveal.initialize({
 				hash: true,
+
+				controls: true,
+                controlsLayout: 'bottom-right',
+                controlsBackArrows: 'faded',
+				progress: true,
+				//history: true,
+				//center: false,
+                slideNumber: 'c/t',
+				//transition: 'fade', // none/fade/slide/convex/concave/zoom
 
 				// Learn about plugins: https://revealjs.com/plugins/
 				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
