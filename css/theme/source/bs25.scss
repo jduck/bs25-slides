@@ -100,6 +100,15 @@ section.has-dark-background {
 .reveal .preso-title-deetz sup { font-size: 0.5em }
 
 // about slide images
+.reveal .delphos img {
+  width: 300px;
+  vertical-align: middle;
+}
+.reveal .magsec img {
+  vertical-align: middle;
+  height: 100px;
+  filter: drop-shadow(5px 5px 5px black);
+}
 .reveal .about-logos {
   height: 300px;
   text-align: center;
@@ -183,16 +192,6 @@ section.has-dark-background {
 }
 .reveal .ctitle p { display: none }
 
-// cheri project title slide
-.reveal .cheri-title {
-  float: right;
-  display: block;
-  height: 200px;
-  width: 200px;
-  background: center / contain url('/lib/img/cherries.svg') no-repeat;
-  //margin-top: -200px;
-  margin-right: 50px;
-}
 
 // test results slide
 .reveal .shell-log {

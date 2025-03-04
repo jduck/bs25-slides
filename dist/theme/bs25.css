@@ -397,6 +397,17 @@ body {
   font-size: 0.5em;
 }
 
+.reveal .delphos img {
+  width: 300px;
+  vertical-align: middle;
+}
+
+.reveal .magsec img {
+  vertical-align: middle;
+  height: 100px;
+  filter: drop-shadow(5px 5px 5px black);
+}
+
 .reveal .about-logos {
   height: 300px;
   text-align: center;
@@ -493,15 +504,6 @@ body {
 
 .reveal .ctitle p {
   display: none;
-}
-
-.reveal .cheri-title {
-  float: right;
-  display: block;
-  height: 200px;
-  width: 200px;
-  background: center/contain url("/lib/img/cherries.svg") no-repeat;
-  margin-right: 50px;
 }
 
 .reveal .shell-log {

@@ -18,11 +18,15 @@
 
 # About me
 
-Principal Security Researcher at Delphos Labs
-<div class="delphos"><img height=120px src="/lib/img/delphos.png" /></div>
+<div class="delphos">
 
-Founder of Magnetite Security
-<div class="magsec"><img height=120px src="/lib/img/magsec.png" /></div>
+* Principal Security Researcher at <img src="/lib/img/delphos.png" />
+</div>
+
+<div class="magsec">
+
+* Founder at <img height=120px src="/lib/img/magsec-bgb.png" /> Magnetite Security
+</div>
 
 Previously:
 <div class="about-logos">
@@ -36,13 +40,19 @@ Previously:
 
 ## Acknowledgements
 
+Tremendous thanks to all of the Linux kernel contributors, especially those working to secure Linux.
+
 Thanks to kees, ilja, roddux, all the awesome people from my workplace, family, and friends.
 
 
 ## Background of Involvement
 
 1. User of Linux since 1993, steadily since
-2. Avid Android user / former security researcher focus
+2. Vulnerability research and exploit development
+3. Kernel chapter author in Android Hacker's Handbook.
+4. Developed and reverse-engineered exploits.
+
+No. I have never tried to upstream anything.
 
 
 ## Disclaimer
@@ -60,17 +70,38 @@ I try my best to be objective.
 
 # Linux Foundation I
 
-* TODO
+"Decentralized innovation. Built on trust.
+
+The Linux Foundation is a neutral, trusted hub for developers and organizations to code, manage, and scale open technology projects and ecosystems."
+
 
 
 # Linux Foundation - Lists, lists, lists
 
-- Show mailing lists
+Currently 745 projects lists. The Linux kernel is one.
+
+- https://www.linuxfoundation.org/projects
 
 
 # Linux Research
 
 What are they actually researching?
+
+- https://www.linuxfoundation.org/research
+
+
+# Linux Foundation Training
+
+- https://training.linuxfoundation.org/full-catalog/?_sft_topic_area=cybersecurity
+
+They have lots of relevant classes! Some free $995 or $3250
+
+
+# Linux Foundation Security Investments
+
+- https://www.linuxfoundation.org/lf-security
+
+TODO
 
 ---
 
