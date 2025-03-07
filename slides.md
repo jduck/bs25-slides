@@ -59,6 +59,25 @@ No. I have never tried to upstream anything.
 
 I try my best to be objective.
 
+
+## What is the Linux Kernel?
+
+<div class="site-quote">
+"The Linux Kernel Organization is a California Public Benefit Corporation established in 2002 to distribute the Linux kernel and other Open Source software to the public without charge. We are recognized by the IRS as a 501(c)3 private operating foundation."
+</div>
+
+The low-level OS software in Linux distrubutions, Android, etc.
+
+It runs with high privilege (ring 0) and has direct access to hardware.
+
+<aside class="notes">
+Raise your hand if... <br />
+ You know what the Linux kernel is <br />
+ You used Linux on your own computer <br />
+ You have compiled your own kernel <br />
+ You have read kernel source code
+</aside>
+
 ---
 
 <!-- .slide: class="ctitle" -->
@@ -74,20 +93,43 @@ I try my best to be objective.
 
 The Linux Foundation is a neutral, trusted hub for developers and organizations to code, manage, and scale open technology projects and ecosystems."
 
+Revenue of 250+ million annually
 
 
-# Linux Foundation - Lists, lists, lists
+# Linux Foundation II - Projects
 
-Currently 745 projects lists. The Linux kernel is one.
+<div class="footnote">
+1. <a href="https://www.linuxfoundation.org/projects">Linux Foundation Projects - https://www.linuxfoundation.org/projects</a><br />
+<br />
+</div>
 
-- https://www.linuxfoundation.org/projects
+* Currently 745 projects listed.
+* The Linux kernel is *ONE* of those.
 
 
-# Linux Research
+# Linux Research I
+
+<div class="footnote">
+1. <a href="https://www.linuxfoundation.org/research">Linux Foundation Research - https://www.linuxfoundation.org/research </a><br />
+</div>
+
+<div class="site-quote">
+"LF Research publishes actionable and decision-useful insights into open source software, hardware, standards, and data based on empirical research methodologies. Through leveraging community networks, project databases, surveys, and qualitative findings, and through its commitment to best practices in primary research, Linux Foundation Research is the definitive home for data-driven insights into open source for the benefit of governments, enterprises, and society at large."
+</div>
+
+It's market research.
+
+
+# Linux Research II
 
 What are they actually researching?
 
-- https://www.linuxfoundation.org/research
+* They are not researching Linux kernel security.
+* They're researching ways to get Linux into more things.
+
+I signed up and got LOTS of emails.
+
+Now unsubscribed.
 
 
 # Linux Foundation Training
@@ -96,12 +138,22 @@ What are they actually researching?
 
 They have lots of relevant classes! Some free $995 or $3250
 
+Do contributors take these?
 
-# Linux Foundation Security Investments
+What about maintainers?
 
-- https://www.linuxfoundation.org/lf-security
 
-TODO
+# LF Security Investments
+
+<div class="footnote">
+1. <a href="https://www.linuxfoundation.org/lf-security">Linux Foundation Security - https://www.linuxfoundation.org/lf-security</a><br />
+</div>
+
+Honorable mentions:
+* Events (ie Linux Security Summit)
+* Alpha Omega
+* OpenSSF
+* Do you know others?
 
 ---
 

@@ -124,6 +124,11 @@ section.has-dark-background {
 .reveal .content h2 { font-size: 1.25em }
 //.reveal .content b,strong { color: white }
 
+// quotes from web sites on slides
+.reveal .site-quote {
+  font-size: 75%;
+}
+
 // footer on all slides (except first)
 .reveal .footer {
   position: absolute;

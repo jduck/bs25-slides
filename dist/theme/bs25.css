@@ -430,6 +430,10 @@ body {
   font-size: 1.25em;
 }
 
+.reveal .site-quote {
+  font-size: 75%;
+}
+
 .reveal .footer {
   position: absolute;
   bottom: 0px;
