@@ -16,8 +16,8 @@ section.has-dark-background {
  * GLOBAL STYLES
  *********************************************/
 body {
-  background: #111827;
-  background-color: #111827;
+  background: black;
+  background-color: black;
 }
 
 .reveal {
@@ -351,13 +351,19 @@ body {
   text-align: left;
 }
 
+body {
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-image: url("/lib/img/dark-cowgirl.webp");
+}
+
 .reveal .slides > section {
   height: 100%;
   padding: 0px;
 }
 
 .reveal .slides .slide-background-content {
-  background: #111827;
+  background: black;
 }
 
 .reveal .slides > section > section {
@@ -448,7 +454,7 @@ body {
 .reveal .footer-title {
   float: left;
   text-align: center;
-  color: #111827;
+  color: black;
   display: inline;
   width: 72%;
   height: 44px;

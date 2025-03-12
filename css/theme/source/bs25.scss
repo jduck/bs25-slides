@@ -18,7 +18,7 @@
 
 
 // Override theme settings (see ../template/settings.scss)
-$backgroundColor: #111827;
+$backgroundColor: black;
 
 $mainColor: #bbbbbb;
 $headingColor: #f0f0f0;
@@ -56,7 +56,13 @@ section.has-dark-background {
 //.reveal .slides { border: 2px solid white }
 
 // keep slide content aligned left (even when printing)
-.reveal .slides { text-align: left }
+.reveal .slides {text-align: left }
+
+body {
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-image: url("/lib/img/dark-cowgirl.webp");
+}
 
 // this enables making divs that take the entire height inside
 .reveal .slides > section {
