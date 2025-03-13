@@ -153,12 +153,15 @@ What about maintainers?
 
 <div class="footnote">
 1. <a href="https://www.linuxfoundation.org/lf-security">Linux Foundation Security - https://www.linuxfoundation.org/lf-security</a><br />
+2. <a href="https://openssf.org/">https://openssf.org/</a><br />
 </div>
 
-Honorable mentions:
+Best efforts:
 * Events (ie Linux Security Summit)
 * Alpha Omega
 * OpenSSF
+  * <div class="site-quote">"seeks to make it easier to sustainably secure the development, maintenance, and consumption of the open source software (OSS) we all depend on."</div>
+  * Particpating in Memory Safety SIG
 * Do you know others?
 
 ---
@@ -189,14 +192,10 @@ Honorable mentions:
 </div>
 
 
-# Ongoing II - OpenSSF
 
-<div class="footnote">1. <a href="https://openssf.org/">https://openssf.org/</a></div>
+# Linux Development Model
 
-Open Source Security Foundation
- - "seeks to make it easier to sustainably secure the development, maintenance, and consumption of the open source software (OSS) we all depend on."
-
-Funded by the Linux Foundation
+* Tree maintainers and subsystem maintainers
 
 
 # TODO - more slides
