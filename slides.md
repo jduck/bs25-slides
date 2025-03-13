@@ -103,8 +103,10 @@ Revenue of 250+ million annually
 <br />
 </div>
 
-* Currently 745 projects listed.
+* Currently 700+ projects listed.
 * The Linux kernel is *ONE* of those.
+
+<img height="350px" src="/lib/img/projects-screeny.png" />
 
 
 # Linux Research I
