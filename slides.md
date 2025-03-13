@@ -396,20 +396,24 @@ TODO: about how disclosure went
 
 * Many improvements over the past 5-10 years
 * More progress is needed
+* Linux kernel concurrency is complicated
 
 
 # Recommendations
 
-* Limit attack surface
+1. Build a threat model
+1. Limit attack surface
 1. Embrace secure development processes
 2. Invest in safe programming practices
     1. All the safeties (Memory, Thread, Type)
+    2. Accelerate Rust adoption
 3. Fix bug classes (ie cross-cache attacks)
+1. Fund security research (ie bug bounty)
 4. Developer education / learn from mistakes
-5. Fund security research (ie bug bounty)
-
-* Train maintainers on security
+5. Train maintainers on security
   * Especially on commonly occurring classes of bugs
+7. Prioritize fixing bugs from syzkaller
+8. Learn from exploits in kernelCTF
 
 
 # Call to Action I
