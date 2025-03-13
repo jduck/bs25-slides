@@ -136,9 +136,13 @@ Now unsubscribed.
 
 # Linux Foundation Training
 
-- https://training.linuxfoundation.org/full-catalog/?_sft_topic_area=cybersecurity
+<div class="footnote">
+1. <a href="https://training.linuxfoundation.org/full-catalog/?_sft_topic_area=cybersecurity">https://training.linuxfoundation.org/full-catalog/?_sft_topic_area=cybersecurity</a><br />
+</div>
 
-They have lots of relevant classes! Some free $995 or $3250
+They have lots of relevant classes!
+
+Costs $0, $995, or $3250
 
 Do contributors take these?
 
