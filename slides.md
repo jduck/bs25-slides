@@ -173,7 +173,25 @@ Best efforts:
 ## Are we there yet?
 
 
-## TODO - slides for state of things
+## Rust for Linux - Drama?
+
+Lots of recent (and past) drama
+* Protesting Rust and multi-language codebases
+* Maintainers quitting
+* Removing selves from subsystems
+* Quitting social media
+
+
+## Rust for Linux - Takeaways
+
+- Linus and Greg KH are providing fair leadership
+- If you want Rust in your kernel by default:
+  - Use Asahi Linux on your Mac
+  - Use Android (binder) (TODO: CONFIRM)
+
+AFAIK No Rust code in other shipping kernels
+
+:-/
 
 ---
 
