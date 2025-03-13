@@ -38,7 +38,7 @@ Previously:
 </div>
 
 
-## Acknowledgements
+## Acknowledgments
 
 Tremendous thanks to all of the Linux kernel contributors, especially those working to secure Linux.
 
@@ -57,6 +57,10 @@ No. I have never tried to upstream anything.
 
 ## Disclaimer
 
+The information presented here is the result of research.
+
+As always, I could have missed something.
+
 I try my best to be objective.
 
 
@@ -66,7 +70,7 @@ I try my best to be objective.
 "The Linux Kernel Organization is a California Public Benefit Corporation established in 2002 to distribute the Linux kernel and other Open Source software to the public without charge. We are recognized by the IRS as a 501(c)3 private operating foundation."
 </div>
 
-The low-level OS software in Linux distrubutions, Android, etc.
+The low-level OS software in Linux distributions, Android, etc.
 
 It runs with high privilege (ring 0) and has direct access to hardware.
 
@@ -94,6 +98,7 @@ Raise your hand if... <br />
 The Linux Foundation is a neutral, trusted hub for developers and organizations to code, manage, and scale open technology projects and ecosystems."
 
 Revenue of 250+ million annually
+* Spends < 5 million on Kernel Org
 
 
 # Linux Foundation II - Projects
@@ -161,8 +166,12 @@ Best efforts:
 * Alpha Omega
 * OpenSSF
   * <div class="site-quote">"seeks to make it easier to sustainably secure the development, maintenance, and consumption of the open source software (OSS) we all depend on."</div>
-  * Particpating in Memory Safety SIG
-* Do you know others?
+  * Participating in Memory Safety SIG and Slack
+* Kernel CI
+
+<aside class="notes">
+We'll come back to Kernel CI...<br />
+</aside>
 
 ---
 
