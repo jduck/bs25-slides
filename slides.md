@@ -202,13 +202,14 @@ AFAIK No Rust code in other shipping kernels
 ## Wait, what?
 
 
-# TODO
+# What is an SDLC?
 
 <div class="footnote">
 1. <a href="https://www.cl.cam.ac.uk/research/security/ctsrd/cheri/">https://www.cl.cam.ac.uk/research/security/ctsrd/cheri/</a><br />
 2. <a href="https://www.morello-project.org/">https://www.morello-project.org/</a>
 </div>
 
+TODO: Lifecycle image
 
 
 # Linux Development Model
