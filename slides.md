@@ -82,6 +82,21 @@ Raise your hand if... <br />
  You have read kernel source code
 </aside>
 
+
+## Why research Linux Kernel Security?
+
+1. Ubiquitous - on billions of devices
+   * Supply chain attack risk
+2. Extremely large attack surface
+3. Complicated C codebase
+4. Persistent and surreptitious access domain
+   * Think rootkits...
+5. Security features - LSM (SELinux, SMACK, etc), crypto, fscrypt, keyring
+   * Can be attack surface too
+
+<aside class="notes">
+</aside>
+
 ---
 
 <!-- .slide: class="ctitle" -->
@@ -91,17 +106,19 @@ Raise your hand if... <br />
 ## What is that?
 
 
-# Linux Foundation I
+# Linux Foundation - Intro
 
+<div class="site-quote">
 "Decentralized innovation. Built on trust.
 
 The Linux Foundation is a neutral, trusted hub for developers and organizations to code, manage, and scale open technology projects and ecosystems."
+</div>
 
 Revenue of 250+ million annually
 * Spends < 5 million on Kernel Org
 
 
-# Linux Foundation II - Projects
+# Linux Foundation - Projects
 
 <div class="footnote">
 1. <a href="https://www.linuxfoundation.org/projects">Linux Foundation Projects - https://www.linuxfoundation.org/projects</a><br />
@@ -114,7 +131,7 @@ Revenue of 250+ million annually
 <img height="350px" src="/lib/img/projects-screeny.png" />
 
 
-# Linux Research I
+# Linux Foundation - Research
 
 <div class="footnote">
 1. <a href="https://www.linuxfoundation.org/research">Linux Foundation Research - https://www.linuxfoundation.org/research </a><br />
@@ -127,19 +144,7 @@ Revenue of 250+ million annually
 It's market research.
 
 
-# Linux Research II
-
-What are they actually researching?
-
-* They are not researching Linux kernel security.
-* They're researching ways to get Linux into more things.
-
-I signed up and got LOTS of emails.
-
-Now unsubscribed.
-
-
-# Linux Foundation Training
+# Linux Foundation - Training
 
 <div class="footnote">
 1. <a href="https://training.linuxfoundation.org/full-catalog/?_sft_topic_area=cybersecurity">https://training.linuxfoundation.org/full-catalog/?_sft_topic_area=cybersecurity</a><br />
@@ -154,14 +159,14 @@ Do contributors take these?
 What about maintainers?
 
 
-# LF Security Investments
+# Linux Foundation - Security
 
 <div class="footnote">
 1. <a href="https://www.linuxfoundation.org/lf-security">Linux Foundation Security - https://www.linuxfoundation.org/lf-security</a><br />
 2. <a href="https://openssf.org/">https://openssf.org/</a><br />
 </div>
 
-Best efforts:
+Relevant projects:
 * Events (ie Linux Security Summit)
 * Alpha Omega
 * OpenSSF
@@ -190,17 +195,32 @@ Lots of recent (and past) drama
 * Removing selves from subsystems
 * Quitting social media
 
+<aside class="notes">
+One protest even occurred IRL during a conference talk!
+</aside>
 
-## Rust for Linux - Takeaways
 
+## Rust for Linux - Thoughts 1
+
+- A challenging project!
 - Linus and Greg KH are providing fair leadership
-- If you want Rust in your kernel by default:
-  - Use Asahi Linux on your Mac
-  - Use Android (binder) (TODO: CONFIRM)
+- However, if you want Rust in your running kernel, use:
+  - Asahi Linux on your Mac
+  - Android (binder)
 
 AFAIK No Rust code in other shipping kernels
 
 :-/
+
+
+## Rust for Linux - Thoughts 2
+
+- Rust is versatile (low-level *and* high-level)
+- A focus on Rust bindings for Kernel C APIs
+  - Rust drivers use the bindings
+- IMHO need Rust acceleration
+- Would it be better to fork?
+- Alternatives like Redox OS's micro-kernel
 
 ---
 
@@ -224,9 +244,100 @@ TODO: Lifecycle image
 # Linux Development Model
 
 * Tree maintainers and subsystem maintainers
+* 80% of developers work on Linux for their employer
+* A few employed by Kernel Org project (guess who)
+* An organization of source trees
+  * Varied ownership and practices
+  * Often along maintainer lines
+* Regular release cadence
+* "next", "stable", etc
+* Strange metrics (number of contributors, lines of code)
+* Then: All bugs are bugs and security bugs are no different
+* Now: All bugs are security bugs and CVEs are assigned
 
 
-# TODO - more slides
+# Threat Modeling
+
+
+# Testing
+
+* TODO: Torture tests?
+
+
+# Linux Kernel CI
+
+* A separate LF project
+
+TODO: MORE on Kernel CI
+
+
+# KASAN
+
+1. Finds bugs and output is actionable (pointing directly to where to look)
+2. Unfortunately requires triggering a big to find it
+
+
+# KCSAN
+
+1. Doesn't even boot with CONFIG_KCSAN_STRICT=y
+2. Does work to identify race bugs, but output often not actionable
+
+
+# KCOV
+
+Kernel covereage
+
+
+# syzkaller
+
+1. Bugs found vs. bugs fixed
+2. Completely open to the public, including PoC
+
+
+# Coverity
+
+1. Quasi-public. Anyone can sign up
+2. 120 members currently
+3. Defect density is number of bugs per thousand lines
+4. ~ 1.0 defect density, 20m lines of code - 22,000 outstanding defects
+5. Somewhat understandable that these don't get burned down
+    1. Coverity has a lot of false positives.
+
+
+# Other Tools
+
+https://github.com/a13xp0p0v/kernel-hardening-checker
+
+Coccinelle
+Smatch
+grsecurity (commercial)
+Linux Kernel Hardening Checker
+
+
+# Security Response
+
+Linux Kernel CNA
+1. Every bug gets a CVE
+2. Lots of top-notch public vulnerability research
+    1. Are the kernel developers watching??
+
+
+# Community Projects
+
+1. Almost all ran by Google employees
+2. KSPP / kernel-hardening
+    1. Meaningful patches to improve security
+    2. KASLR - Argued to be marginally useful.
+    3. Lately a bunch of "kcalloc" and "strscpy" changes
+
+
+# Kernel CTF
+
+1. Google buys exploits for Linux kernel vulns
+2. Bonuses for 0day
+3. Exploits published
+4. Goal is to learn from bugs and create mitigations
+5. Cross-cache attacks are the hotness
 
 ---
 
@@ -237,7 +348,40 @@ TODO: Lifecycle image
 ## Linux Keys UAF
 
 
-# TODO - more slides
+# Backstory
+
+Recently decided to dig for kernel CTF
+Signed up for Coverity access
+Correlating syzkaller findings
+
+
+# Technical details I
+
+Race condition leads to UAF
+Takes a while to trigger
+
+
+# Technical details II
+
+Patch that introduced the issue
+
+
+# Technical details III
+
+TODO: sequence diagram of what's happening
+
+
+# Exploitable?
+
+Consequence seems pretty limited
+More research is needed
+
+
+# Disclosure
+
+Getting it fixed...
+
+TODO: about how disclosure went
 
 ---
 
@@ -250,12 +394,22 @@ TODO: Lifecycle image
 
 # Conclusions
 
-TODO: call people to action!
+* Many improvements over the past 5-10 years
+* More progress is needed
 
 
 # Recommendations
 
-TODO: call people to action!
+* Limit attack surface
+1. Embrace secure development processes
+2. Invest in safe programming practices
+    1. All the safeties (Memory, Thread, Type)
+3. Fix bug classes (ie cross-cache attacks)
+4. Developer education / learn from mistakes
+5. Fund security research (ie bug bounty)
+
+* Train maintainers on security
+  * Especially on commonly occurring classes of bugs
 
 
 # Call to Action I
@@ -269,17 +423,18 @@ TODO: call people to action!
 
 ## Any questions or comments?
 
-Feel free to reach out later:
+Find me later:
 <div class="contactinfo">
 Joshua J. Drake<br />
-jduck @ Twitter/Discord/Mastadon/etc<br />
+jduck on the Internet<br />
+<a href="https://jduck.me/">https://jduck.me/</a>
 </div>
 
 ---
 
 # About these slides
 
-Slides were created in <a href="https://revealjs.com/markdown/">markdown with nreveal.js</a>
+Slides were created in <a href="https://revealjs.com/markdown/">markdown with reveal.js</a>
 
 You can export by printing the <a href="/?print-pdf">PDF</a>
 
