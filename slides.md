@@ -260,11 +260,18 @@ AFAIK No Rust code in other shipping kernels
 
 # What is an SDLC?
 
-Secure (Software) Development Life Cycle
-* This is a process design for developing maximally secure code.
-* Example:
+<div class="footnote">
+1. <a href="https://youtu.be/-bFAeTfvMjo">Practical Steps for Securing the entire SDLC - https://youtu.be/-bFAeTfvMjo</a><br />
+2. <a href="https://codesigningstore.com/secure-software-development-life-cycle-sdlc">Secure SDLC by CodeSigningStore (digicert)</a><br />
+</div>
 
-TODO: Lifecycle image
+Secure (Software) Development Life Cycle
+* A process design for developing secure code.
+
+<div class="about-logos">
+ <img src="/lib/img/ssdlc-process.png"><br />
+<div style="font-size: 14pt">Image provided as an example only</div>
+</div>
 
 
 # Linux Development Model I
