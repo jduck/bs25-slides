@@ -49,19 +49,21 @@ Thanks to kees, ilja, roddux, all the awesome people from my workplace, family, 
 
 1. User of Linux since 1993, steadily since
 2. Vulnerability research and exploit development
-3. Kernel chapter author in Android Hacker's Handbook.
-4. Developed and reverse-engineered exploits.
+   * Reverse-engineered exploits, analyzed bugs
+4. Kernel chapter author in Android Hacker's Handbook.
 
 No. I have never tried to upstream anything.
 
 
 ## Disclaimer
 
-The information presented here is the result of research.
+The information presented here is the result of off-and-on research over decades.
+
+I will try to be objective, but also share my opinions based on my experience.
+
+I have tried to make sure information is current.
 
 As always, I could have missed something.
-
-I try my best to be objective.
 
 
 ## What is the Linux Kernel?
@@ -90,12 +92,9 @@ Raise your hand if... <br />
 2. Extremely large attack surface
 3. Complicated C codebase
 4. Persistent and surreptitious access domain
-   * Think rootkits...
+   * Think sandbox escapes, rootkits...
 5. Security features - LSM (SELinux, SMACK, etc), crypto, fscrypt, keyring
    * Can be attack surface too
-
-<aside class="notes">
-</aside>
 
 ---
 
@@ -103,7 +102,7 @@ Raise your hand if... <br />
 # The Linux Foundation
 <div class="ctitle-line"></div>
 
-## What is that?
+## $$$
 
 
 # Linux Foundation - Intro
@@ -163,7 +162,9 @@ What about maintainers?
 
 <div class="footnote">
 1. <a href="https://www.linuxfoundation.org/lf-security">Linux Foundation Security - https://www.linuxfoundation.org/lf-security</a><br />
-2. <a href="https://openssf.org/">https://openssf.org/</a><br />
+2. <a href="https://alpha-omega.dev/">https://alpha-omega.dev/</a><br />
+3. <a href="https://openssf.org/">https://openssf.org/</a><br />
+<br />
 </div>
 
 Relevant projects:
@@ -171,7 +172,7 @@ Relevant projects:
 * Alpha Omega
 * OpenSSF
   * <div class="site-quote">"seeks to make it easier to sustainably secure the development, maintenance, and consumption of the open source software (OSS) we all depend on."</div>
-  * Participating in Memory Safety SIG and Slack
+  * I am participating in Memory Safety SIG and Slack
 * Kernel CI
 
 <aside class="notes">
@@ -184,7 +185,7 @@ We'll come back to Kernel CI...<br />
 # Rust for Linux
 <div class="ctitle-line"></div>
 
-## Are we there yet?
+## Is it the future?
 
 
 ## Rust for Linux - Drama?
@@ -195,6 +196,8 @@ Lots of recent (and past) drama
 * Removing selves from subsystems
 * Quitting social media
 
+The conspiracy theorist in me raises an eyebrow.
+
 <aside class="notes">
 One protest even occurred IRL during a conference talk!
 </aside>
@@ -202,8 +205,9 @@ One protest even occurred IRL during a conference talk!
 
 ## Rust for Linux - Thoughts 1
 
-- A challenging project!
-- Linus and Greg KH are providing fair leadership
+- A challenging project needs good leaders!
+  - Greg KH is providing good leadership
+  - Linus is providing fair leadership
 - However, if you want Rust in your running kernel, use:
   - Asahi Linux on your Mac
   - Android (binder)
@@ -215,60 +219,148 @@ AFAIK No Rust code in other shipping kernels
 
 ## Rust for Linux - Thoughts 2
 
+<div class="footnote">
+1. <a href="https://newsletter.pragmaticengineer.com/p/how-linux-is-built-with-greg-kroah">https://newsletter.pragmaticengineer.com/p/how-linux-is-built-with-greg-kroah</a><br />
+</div>
+
 - Rust is versatile (low-level *and* high-level)
+  - Greg thinks it would've eliminated 50% of past kernel bugs. I think more.
 - A focus on Rust bindings for Kernel C APIs
   - Rust drivers use the bindings
-- IMHO need Rust acceleration
-- Would it be better to fork?
+- Adoption status is minimal
+  - Currently 25,000 / 40,000,000 lines of code are Rust
+  - 0.0625%
+- Driving improvements in the C code!
+
+<aside class="notes">
+
+- Rust helps eliminate issues through its type system.
+- I think the Rust for Linux approach is understandable, but not ideal.
+</aside>
+
+
+## Rust for Linux - Final Thoughts
+
 - Alternatives like Redox OS's micro-kernel
+
+- Sentiment is a mixed bag
+
+- How can we accelerate Rust adoption in Linux?
+
+- Would it be better to fork?
 
 ---
 
 <!-- .slide: class="ctitle" -->
-# A Linux SDLC?
+# Linux Kernel SDLC
 <div class="ctitle-line"></div>
 
-## Wait, what?
+## A path forward
 
 
 # What is an SDLC?
 
-<div class="footnote">
-1. <a href="https://www.cl.cam.ac.uk/research/security/ctsrd/cheri/">https://www.cl.cam.ac.uk/research/security/ctsrd/cheri/</a><br />
-2. <a href="https://www.morello-project.org/">https://www.morello-project.org/</a>
-</div>
+Secure (Software) Development Life Cycle
+* This is a process design for developing maximally secure code.
+* Example:
 
 TODO: Lifecycle image
 
 
-# Linux Development Model
+# Linux Development Model I
 
-* Tree maintainers and subsystem maintainers
+<div class="footnote">
+1. <a href="https://newsletter.pragmaticengineer.com/p/how-linux-is-built-with-greg-kroah">https://newsletter.pragmaticengineer.com/p/how-linux-is-built-with-greg-kroah</a><br />
+</div>
+
+* Maintainers all the way down
+  * Tree maintainers
+  * Subsystem maintainers
+  * Driver/feature maintainers
 * 80% of developers work on Linux for their employer
-* A few employed by Kernel Org project (guess who)
+* A handful employed by Kernel Org project (guess who)
+* Regular release cadence
+  * "next", "stable", etc
+  * 2 week merge window
+  * 7 week regression period (RC)
+
+
+# Linux Development Model II
+
 * An organization of source trees
   * Varied ownership and practices
   * Often along maintainer lines
-* Regular release cadence
-* "next", "stable", etc
-* Strange metrics (number of contributors, lines of code)
-* Then: All bugs are bugs and security bugs are no different
-* Now: All bugs are security bugs and CVEs are assigned
+* Key metrics are number of contributors and lines of code
+* Security knowledge is deprioritized
+  * Then: Bugs are bugs and security bugs are not special
+  * Now: All bugs are security bugs and CVEs are assigned
+
+
+# Linux Development Model III
+
+TODO: Lifecycle image for Linux
 
 
 # Threat Modeling
 
+* I am not aware of a Linux Kernel threat model.
+* A couple of threat models for parts of the kernel
+  - confidential computing and eBPF
+
+I think this should change.
+
 
 # Testing
 
-* TODO: Torture tests?
+<div class="footnote">
+1. <a href="https://github.com/linux-test-project/ltp">https://github.com/linux-test-project/ltp</a><br />
+2. <a href="https://linux-test-project.readthedocs.io/en/latest/">https://linux-test-project.readthedocs.io/en/latest/</a><br />
+3. <a href="https://docs.kernel.org/gpu/automated_testing.html">https://docs.kernel.org/gpu/automated_testing.html</a><br />
+</div>
+
+* Test suites
+  * kselftest
+  * Linux Test Project
+  * IGT (Intel Graphics Test?)
+  * "Torture tests"
+    * RCU, Locking
+* Lots of manual testing
+  * Does it boot? Does my thing work?
+  * Done by developers, maintainers, etc.
 
 
-# Linux Kernel CI
+# Linux Kernel CI (I)
+
+<div class="footnote">
+1. <a href="https://kernelci.org/">https://kernelci.org/</a><br />
+2. <a href="https://github.com/kernelci/kcidb">https://github.com/kernelci/kcidb</a><br />
+</div>
+
+<div class="site-quote">
+
+"KernelCI is a community-based open source distributed test automation system focused on upstream kernel development. The primary goal of KernelCI is to use an open testing philosophy to ensure the quality, stability and long-term maintenance of the Linux kernel."
+</div>
 
 * A separate LF project
+  * About scalable, automated kernel testing
+  * KCIDB attempts to glue together CI systems distributed accross company lines
 
-TODO: MORE on Kernel CI
+
+# Linux Kernel CI (II)
+
+<div class="footnote">
+1. <a href="https://youtu.be/KD0Hk6PghPw">Kernel CI - How Far Can It Go?</a><br />
+2. <a href="https://youtu.be/Gi298Frere0">Mentorship Session: KernelCI: Travel Guide 2024</a><br />
+</div>
+
+Two great talks from people involved with the KernelCI project.
+
+<div class="site-quote">
+
+"testing happens in a separate space from development" Guillaume Tucker (@ 59:31)
+</div>
+
+I think there's a lot of room for improvement in testing and CI.
 
 
 # KASAN
