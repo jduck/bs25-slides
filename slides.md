@@ -441,11 +441,16 @@ Are any kernel developers studying??
 
 # Kernel CTF
 
-1. Google buys exploits for Linux kernel vulns
-2. Bonuses for 0day
-3. Exploits published
-4. Goal is to learn from bugs and create mitigations
-5. Cross-cache attacks are the hotness
+Google buys exploits for the Linux kernel!
+
+* Goal is to learn from bugs and create mitigations
+  * Bonuses for 0day (n-day allowed)
+  * Exploits are published
+    * Cross-cache attacks are the hotness
+
+Rewards exploits, not fixing bugs :-/
+
+TODO: Is there a table of KCTF submissions/payouts/reports/techniques?
 
 ---
 
