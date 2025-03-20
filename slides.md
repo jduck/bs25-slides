@@ -169,11 +169,11 @@ What about maintainers?
 
 Relevant projects:
 * Events (ie Linux Security Summit)
-* Alpha Omega
+* Alpha Omega (less Kernel focus)
 * OpenSSF
   * <div class="site-quote">"seeks to make it easier to sustainably secure the development, maintenance, and consumption of the open source software (OSS) we all depend on."</div>
   * I am participating in Memory Safety SIG and Slack
-* Kernel CI
+* Kernel CI...
 
 <aside class="notes">
 We'll come back to Kernel CI...<br />
@@ -362,56 +362,72 @@ Two great talks from people involved with the KernelCI project.
 
 I think there's a lot of room for improvement in testing and CI.
 
-
-# KASAN
-
-1. Finds bugs and output is actionable (pointing directly to where to look)
-2. Unfortunately requires triggering a big to find it
+There is a new dashboard and cli tooling!!
 
 
-# KCSAN
+# Security Tooling I
 
-1. Doesn't even boot with CONFIG_KCSAN_STRICT=y
-2. Does work to identify race bugs, but output often not actionable
-
-
-# KCOV
-
-Kernel covereage
-
-
-# syzkaller
-
-1. Bugs found vs. bugs fixed
-2. Completely open to the public, including PoC
+* KASAN - https://docs.kernel.org/dev-tools/kasan.html
+  * Direct and actionable reports
+  * Requires triggering a bug to find it
+  * Used by syzkaller and some kernelCI projects
+* KCSAN - https://docs.kernel.org/dev-tools/kcsan.html
+  * Identify data races -- output often not actionable
+  * Doesn't even boot with `CONFIG_KCSAN_STRICT=y`
+* KCOV - https://docs.kernel.org/dev-tools/kcov.html
+  * Kernel code coverage metrics
 
 
-# Coverity
+# Security Tooling II - syzkaller
 
-1. Quasi-public. Anyone can sign up
-2. 120 members currently
-3. Defect density is number of bugs per thousand lines
-4. ~ 1.0 defect density, 20m lines of code - 22,000 outstanding defects
-5. Somewhat understandable that these don't get burned down
-    1. Coverity has a lot of false positives.
+<div class="footnote">
+1. <a href="https://github.com/google/syzkaller">https://github.com/google/syzkaller</a><br />
+</div>
+
+<div class="site-quote">
+
+"syzkaller ([siːzˈkɔːlə]) is an unsupervised coverage-guided kernel fuzzer."
+</div>
+
+* Completely open to the public, including PoC
+
+TODO: Bugs found vs. bugs fixed
+
+
+# Security Tooling III - Coverity
+
+* Quasi-public. Anyone can sign up!
+  * 128 members currently
+* Defect density - number of bugs per thousand lines
+  * Linux ~ 1.0 defect density
+  * Many outstanding "defects"
+    * Understandable that these don't get burned down
+      * Coverity has a lot of false positives.
 
 
 # Other Tools
 
-https://github.com/a13xp0p0v/kernel-hardening-checker
+<div class="footnote">
+1. <a href="https://coccinelle.gitlabpages.inria.fr/website/">https://coccinelle.gitlabpages.inria.fr/website/</a><br />
+2. <a href="https://github.com/a13xp0p0v/kernel-hardening-checker">https://github.com/a13xp0p0v/kernel-hardening-checker</a><br />
+</div>
 
-Coccinelle
-Smatch
-grsecurity (commercial)
-Linux Kernel Hardening Checker
+* Coccinelle Code transformation tool
+  * For fixing bug patterns
+* Smatch static checker by Dan Carpenter
+* Linux Kernel Hardening Checker by Alexander Popov
+  * Also Linux Defence Map and other tools
+* grsecurity
+  * Commercial kernel by OSS Inc
 
 
 # Security Response
 
-Linux Kernel CNA
-1. Every bug gets a CVE
-2. Lots of top-notch public vulnerability research
-    1. Are the kernel developers watching??
+* Linux Kernel is a CNA
+  * Every bug gets a CVE
+* Lots of top-notch public vulnerability research
+
+Are any kernel developers studying??
 
 
 # Community Projects
@@ -484,33 +500,46 @@ TODO: about how disclosure went
 ## Let's wrap up
 
 
-# Conclusions
+# Recommendations for LF
 
-* Many improvements over the past 5-10 years
-* More progress is needed
-* Linux kernel concurrency is complicated
+1. Increase focus on the Linux Kernel
+2. Fund critical security functions
+   * Build a threat model
+   * Evaluate bugs for security impact
+   * More audits please!
+   * Bug bounty? Patch bounty?
+
+Please throw more money at this problem space.
 
 
-# Recommendations
+# ... for Linux Kernel Org
 
-1. Build a threat model
-1. Limit attack surface
 1. Embrace secure development processes
-2. Invest in safe programming practices
-    1. All the safeties (Memory, Thread, Type)
-    2. Accelerate Rust adoption
-3. Fix bug classes (ie cross-cache attacks)
-1. Fund security research (ie bug bounty)
-4. Developer education / learn from mistakes
-5. Train maintainers on security
-  * Especially on commonly occurring classes of bugs
-7. Prioritize fixing bugs from syzkaller
-8. Learn from exploits in kernelCTF
+2. Accelerate Rust Adoption
+3. Developer / Maintainer education
+   * Encourage security training
+   * Study commonly occurring classes of bugs
+   * Learn from bugs and exploits in kernelCTF
+     * Fix recurring exploit techniques (cross-cache)
+4. Prioritize fixing bugs from syzkaller
 
 
-# Call to Action I
+# Recommendations for Users
 
-TODO: call people to action!
+1. Only give access to those you trust
+   * Thankfully multi-user systems are less common
+2. Limit your attack surface
+   * virtual machines, SELinux, grsec, containers, capabilities, permissions
+
+
+# Conclusion
+
+* Linux kernel concurrency is complicated
+* Increased risk due to syzkaller and kernelCTF
+  * Lowers the bar for attackers
+* Many improvements over the past 5-10 years
+* Ongoing efforts look promising
+* More progress is needed. Please help!
 
 ---
 
