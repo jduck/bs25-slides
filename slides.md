@@ -399,10 +399,10 @@ TODO: Bugs found vs. bugs fixed
 * Quasi-public. Anyone can sign up!
   * 128 members currently
 * Defect density - number of bugs per thousand lines
-  * Linux ~ 1.0 defect density
   * Many outstanding "defects"
-    * Understandable that these don't get burned down
-      * Coverity has a lot of false positives.
+    * Coverity has a lot of false positives.
+
+<img height="300px" src="/lib/img/linux-coverity.png" />
 
 
 # Other Tools
