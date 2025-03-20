@@ -205,6 +205,11 @@ One protest even occurred IRL during a conference talk!
 
 ## Rust for Linux - Thoughts 1
 
+<div class="footnote">
+1. <a href="https://lore.kernel.org/rust-for-linux/2025021954-flaccid-pucker-f7d9@gregkh/">Greg-KH on Rust in Linux</a><br />
+<br />
+</div>
+
 - A challenging project needs good leaders!
   - Greg KH is providing good leadership
   - Linus is providing fair leadership
@@ -278,6 +283,7 @@ Secure (Software) Development Life Cycle
 
 <div class="footnote">
 1. <a href="https://newsletter.pragmaticengineer.com/p/how-linux-is-built-with-greg-kroah">https://newsletter.pragmaticengineer.com/p/how-linux-is-built-with-greg-kroah</a><br />
+2. <a href="https://www.linuxfoundation.org/blog/blog/role-of-a-linux-kernel-maintainer">https://www.linuxfoundation.org/blog/blog/role-of-a-linux-kernel-maintainer</a><br />
 </div>
 
 * Maintainers all the way down
@@ -299,8 +305,6 @@ Secure (Software) Development Life Cycle
   * Often along maintainer lines
 * Key metrics are number of contributors and lines of code
 * Security knowledge is deprioritized
-  * Then: Bugs are bugs and security bugs are not special
-  * Now: All bugs are security bugs and CVEs are assigned
 
 
 # Linux Development Model III
@@ -350,6 +354,7 @@ I think this should change.
 
 * A separate LF project
   * About scalable, automated kernel testing
+    * Basically modern DevOps for the Linux Kernel!
   * KCIDB attempts to glue together CI systems distributed accross company lines
 
 
@@ -360,16 +365,64 @@ I think this should change.
 2. <a href="https://youtu.be/Gi298Frere0">Mentorship Session: KernelCI: Travel Guide 2024</a><br />
 </div>
 
-Two great talks from people involved with the KernelCI project.
+Two great talks from people from the KernelCI project.
 
 <div class="site-quote">
 
-"testing happens in a separate space from development" Guillaume Tucker (@ 59:31)
+* "testing happens in a separate space from development" Guillaume Tucker (@ 59:31)
 </div>
 
-I think there's a lot of room for improvement in testing and CI.
+I think there's room for improvement in testing and CI.
+* For example, code coverage is a WIP
 
 There is a new dashboard and cli tooling!!
+
+
+# Kernel CTF
+
+Google buys exploits for the Linux kernel!
+
+* Goal is to learn from bugs and create mitigations
+  * Bonuses for 0day (n-day allowed)
+  * Exploits are published
+    * Cross-cache attacks are the hotness
+
+Rewards exploits, not fixing bugs :-/
+
+TODO: Is there a table of KCTF submissions/payouts/reports/techniques?
+
+
+# Security Response
+
+<div class="footnote">
+1. <a href="https://www.theregister.com/2017/11/20/security_people_are_morons_says_linus_torvalds/">https://www.theregister.com/2017/11/20/security_people_are_morons_says_linus_torvalds/</a><br />
+</div>
+
+* Old mantra: "Security problems are just bugs"
+* Linux Kernel became a CNA!
+  * Now: All bugs are security bugs and CVEs are assigned to everything.
+
+Lots of top-notch public vulnerability research
+* Are any kernel developers studying these??
+
+There's a reason we treat security bugs differently.
+
+
+# Community Projects
+
+1. Almost all ran by Google employees
+2. KSPP / kernel-hardening
+    1. Meaningful patches to improve security
+    2. KASLR - Argued to be marginally useful.
+    3. Lately a bunch of "kcalloc" and "strscpy" changes
+
+---
+
+<!-- .slide: class="ctitle" -->
+# Kernel Security Tooling
+<div class="ctitle-line"></div>
+
+## Yes, they exist!
 
 
 # Security Tooling I
@@ -415,7 +468,7 @@ TODO: Bugs found vs. bugs fixed
 # Other Tools
 
 <div class="footnote">
-1. <a href="https://coccinelle.gitlabpages.inria.fr/website/">https://coccinelle.gitlabpages.inria.fr/website/</a><br />
+1. <a href="https://coccinelle.gitlabpages.inria.fr/website/impact_linux.html">https://coccinelle.gitlabpages.inria.fr/website/impact_linux.html</a><br />
 2. <a href="https://github.com/a13xp0p0v/kernel-hardening-checker">https://github.com/a13xp0p0v/kernel-hardening-checker</a><br />
 </div>
 
@@ -426,38 +479,6 @@ TODO: Bugs found vs. bugs fixed
   * Also Linux Defence Map and other tools
 * grsecurity
   * Commercial kernel by OSS Inc
-
-
-# Security Response
-
-* Linux Kernel is a CNA
-  * Every bug gets a CVE
-* Lots of top-notch public vulnerability research
-
-Are any kernel developers studying??
-
-
-# Community Projects
-
-1. Almost all ran by Google employees
-2. KSPP / kernel-hardening
-    1. Meaningful patches to improve security
-    2. KASLR - Argued to be marginally useful.
-    3. Lately a bunch of "kcalloc" and "strscpy" changes
-
-
-# Kernel CTF
-
-Google buys exploits for the Linux kernel!
-
-* Goal is to learn from bugs and create mitigations
-  * Bonuses for 0day (n-day allowed)
-  * Exploits are published
-    * Cross-cache attacks are the hotness
-
-Rewards exploits, not fixing bugs :-/
-
-TODO: Is there a table of KCTF submissions/payouts/reports/techniques?
 
 ---
 
