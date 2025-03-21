@@ -260,7 +260,7 @@ AFAIK No Rust code in other shipping kernels
 # Linux Kernel SDLC
 <div class="ctitle-line"></div>
 
-## A path forward
+## Where does security happen?
 
 
 # What is an SDLC?
@@ -292,24 +292,24 @@ Secure (Software) Development Life Cycle
   * Driver/feature maintainers
 * 80% of developers work on Linux for their employer
 * A handful employed by Kernel Org project (guess who)
-* Regular release cadence
-  * "next", "stable", etc
-  * 2 week merge window
-  * 7 week regression period (RC)
 
 
 # Linux Development Model II
 
+* Regular release cadence
+  * "next", "stable", etc
+  * 2 week merge window
+  * 7 week regression period (RC)
+* Key metrics are number of contributors and LoC
 * An organization of source trees
   * Varied ownership and practices
   * Often along maintainer lines
-* Key metrics are number of contributors and lines of code
 * Security knowledge is deprioritized
 
 
-# Linux Development Model III
+# Linux SDLC?
 
-TODO: Lifecycle image for Linux
+<img height="500px" src="/lib/img/kci-flow.png" />
 
 
 # Threat Modeling
@@ -319,6 +319,25 @@ TODO: Lifecycle image for Linux
   - confidential computing and eBPF
 
 I think this should change.
+
+
+# Community Projects
+
+<div class="footnote">
+1. <a href="https://kspp.github.io/">https://kspp.github.io/</a><br />
+</div>
+
+**Most** kernel security efforts are **community projects**.
+
+1. Kernel Self-Protection Project (KSPP)
+    1. Founded in response to grsec going commerical
+    2. Upstream meaningful patches to improve security
+       * KASLR, etc
+    3. kernel-hardening mailing list
+2. syzkaller - more later
+3. kernelCTF - more later
+
+These are all ran by Google!
 
 
 # Testing
@@ -333,11 +352,12 @@ I think this should change.
   * kselftest
   * Linux Test Project
   * IGT (Intel Graphics Test?)
-  * "Torture tests"
-    * RCU, Locking
+  * "Torture tests" (RCU, Locking)
 * Lots of manual testing
   * Does it boot? Does my thing work?
   * Done by developers, maintainers, etc.
+
+Looks like a lot, but really isn't.
 
 
 # Linux Kernel CI (I)
@@ -356,6 +376,10 @@ I think this should change.
   * About scalable, automated kernel testing
     * Basically modern DevOps for the Linux Kernel!
   * KCIDB attempts to glue together CI systems distributed accross company lines
+
+<div class="about-logos">
+<img height="100px" src="/lib/img/kernelci.svg" />
+</div>
 
 
 # Linux Kernel CI (II)
@@ -377,19 +401,7 @@ I think there's room for improvement in testing and CI.
 
 There is a new dashboard and cli tooling!!
 
-
-# Kernel CTF
-
-Google buys exploits for the Linux kernel!
-
-* Goal is to learn from bugs and create mitigations
-  * Bonuses for 0day (n-day allowed)
-  * Exploits are published
-    * Cross-cache attacks are the hotness
-
-Rewards exploits, not fixing bugs :-/
-
-TODO: Is there a table of KCTF submissions/payouts/reports/techniques?
+This project has a lot of potential!
 
 
 # Security Response
@@ -408,13 +420,36 @@ Lots of top-notch public vulnerability research
 There's a reason we treat security bugs differently.
 
 
-# Community Projects
+# Kernel CTF
 
-1. Almost all ran by Google employees
-2. KSPP / kernel-hardening
-    1. Meaningful patches to improve security
-    2. KASLR - Argued to be marginally useful.
-    3. Lately a bunch of "kcalloc" and "strscpy" changes
+<div class="footnote">
+1. <a href="https://google.github.io/security-research/kernelctf/rules.html">https://google.github.io/security-research/kernelctf/rules.html</a><br />
+2. <a href="https://youtu.be/dUdU0lp35xU">Cross-CPU Allocation to Exploit Preempt-Disabled Linux - Hexacon 2024 on YouTube</a><br />
+</div>
+
+Google buys **exploits** for the Linux kernel!
+
+* Goal is to learn from bugs and create mitigations
+  * Bonuses for 0day (n-day allowed)
+  * Exploits are published
+    * Cross-cache attacks are the hotness
+
+Rewards exploits, not fixing bugs :-/
+
+
+# Kernel CTF II
+
+kCTF uses a submission window system
+
+1. Only one winner per release window
+2. Only pays out for exploits
+3. Even custom mitigations continually bypassed
+
+This project increases public risk.
+
+1. Public tools to help kids bypass KASLR, cross-cache
+2. Example exploits to study, copy, train on
+3. Doesn't help with getting bugs fixed
 
 ---
 
@@ -427,6 +462,8 @@ There's a reason we treat security bugs differently.
 
 # Security Tooling I
 
+* KCOV - https://docs.kernel.org/dev-tools/kcov.html
+  * Kernel code coverage metrics
 * KASAN - https://docs.kernel.org/dev-tools/kasan.html
   * Direct and actionable reports
   * Requires triggering a bug to find it
@@ -434,8 +471,7 @@ There's a reason we treat security bugs differently.
 * KCSAN - https://docs.kernel.org/dev-tools/kcsan.html
   * Identify data races -- output often not actionable
   * Doesn't even boot with `CONFIG_KCSAN_STRICT=y`
-* KCOV - https://docs.kernel.org/dev-tools/kcov.html
-  * Kernel code coverage metrics
+* Other sanitizers - https://google.github.io/kernel-sanitizers/
 
 
 # Security Tooling II - syzkaller
@@ -449,9 +485,22 @@ There's a reason we treat security bugs differently.
 "syzkaller ([siːzˈkɔːlə]) is an unsupervised coverage-guided kernel fuzzer."
 </div>
 
-* Completely open to the public, including PoC
+* Continuous fuzzing of the Linux Kernel
+* Public dashboard (syzbot)
+* Lots of neat features like auto-bisect
+* Mailing list integration
 
-TODO: Bugs found vs. bugs fixed
+This project increases public risk.
+
+1. Completely open to the public, including PoC
+2. Fixes are significantly slower than findings
+
+<aside class="notes">
+
+* I saw a graph with a slide that showed findings vs fixes.
+* Findings at 45deg angle, fixes at 30deg
+* I couldn't find it, LMK if you find it.
+</aside>
 
 
 # Security Tooling III - Coverity
@@ -462,7 +511,9 @@ TODO: Bugs found vs. bugs fixed
   * Many outstanding "defects"
     * Coverity has a lot of false positives.
 
+<div class="about-logos">
 <img height="300px" src="/lib/img/linux-coverity.png" />
+</div>
 
 
 # Other Tools
@@ -554,7 +605,8 @@ Please throw more money at this problem space.
    * Study commonly occurring classes of bugs
    * Learn from bugs and exploits in kernelCTF
      * Fix recurring exploit techniques (cross-cache)
-4. Prioritize fixing bugs from syzkaller
+4. Hire security staff!
+5. Prioritize fixing bugs from syzkaller
 
 
 # Recommendations for Users
@@ -562,12 +614,14 @@ Please throw more money at this problem space.
 1. Only give access to those you trust
    * Thankfully multi-user systems are less common
 2. Limit your attack surface
-   * virtual machines, SELinux, grsec, containers, capabilities, permissions
+   * Try to minimize as much as possible!
+       * virtual machines, SELinux, seccomp, containers, capabilities, permissions
 
 
 # Conclusion
 
-* Linux kernel concurrency is complicated
+* The Linux kernel is very complicated
+  * Especially concurrency
 * Increased risk due to syzkaller and kernelCTF
   * Lowers the bar for attackers
 * Many improvements over the past 5-10 years
