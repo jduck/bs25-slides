@@ -248,7 +248,7 @@ AFAIK No Rust code in other shipping kernels
 
 - Alternatives like Redox OS's micro-kernel
 
-- Sentiment is a mixed bag
+- Developer sentiment is a mixed bag
 
 - How can we accelerate Rust adoption in Linux?
 
@@ -429,7 +429,7 @@ There's a reason we treat security bugs differently.
 
 Google buys **exploits** for the Linux kernel!
 
-* Goal is to learn from bugs and create mitigations
+* Goal is to study exploits to create mitigations
   * Bonuses for 0day (n-day allowed)
   * Exploits are published
     * Cross-cache attacks are the hotness
