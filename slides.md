@@ -102,7 +102,7 @@ Raise your hand if... <br />
 # The Linux Foundation
 <div class="ctitle-line"></div>
 
-## $$$
+## $$$ ???
 
 
 # Linux Foundation - Intro
@@ -487,8 +487,8 @@ This project increases public risk.
 
 * Continuous fuzzing of the Linux Kernel
 * Public dashboard (syzbot)
-* Lots of neat features like auto-bisect
-* Mailing list integration
+* Features: auto-bisect, mailing list integration, re-check
+* Generates programs which look like fork bombs
 
 This project increases public risk.
 
@@ -542,38 +542,99 @@ This project increases public risk.
 
 # Backstory
 
-Recently decided to dig for kernel CTF
-Signed up for Coverity access
-Correlating syzkaller findings
+* Recently decided to dig for kernel CTF
+* Honed in on the "keys" subsystem
+  * Run `cat /proc/keys` to see if you have it
+* Signed up for Coverity access
+  * Reviewed 17 different bugs
+  * 2 true positives, 6 undecided, 9 false positive
+* Tried correlating syzkaller findings
+  * Challenging due to fundamental differences
 
 
-# Technical details I
+# Technical Details - About the bug
 
-Race condition leads to UAF
-Takes a while to trigger
+* Race condition leads to UAF
+* Takes time to trigger (2-10 min)
+* Found by syzkaller
+
+<div class="about-logos">
+<img height="300px" src="/lib/img/syz-keys-uaf.png" />
+</div>
 
 
 # Technical details II
 
-Patch that introduced the issue
+Patch that introduces the issue:
+
+```diff
+diff --git a/security/keys/key.c b/security/keys/key.c
+index 5607900383298f..2a9a769e795e1c 100644
+--- a/[security/keys/key.c](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/security/keys/key.c?id=45db3ab70092637967967bfd8e6144017638563c)
++++ b/[security/keys/key.c](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/security/keys/key.c?id=9578e327b2b4935a25d49e3891b8fcca9b6c10c6)
+@@ -645,8 +647,18 @@ void key_put(struct key *key)
+
+if (key) {
+  key_check(key);
+- if (refcount_dec_and_test(&key->usage))
++ if (refcount_dec_and_test(&key->usage)) {
++   unsigned long flags;
++
++   /* deal with the user's key tracking and quota */
++   if (test_bit(KEY_FLAG_IN_QUOTA, &key->flags)) {
++     spin_lock_irqsave(&key->user->lock, flags);
++     key->user->qnkeys--;
++     key->user->qnbytes -= key->quotalen;
++     spin_unlock_irqrestore(&key->user->lock, flags);
++   }
+    schedule_work(&key_gc_work);
++ }
+ }
+}
+EXPORT_SYMBOL(key_put);
+```
+
+<aside class="notes">
+
+Can anyone see the bug yet?
+</aside>
 
 
 # Technical details III
 
-TODO: sequence diagram of what's happening
+| Thread 1                                                                      | Thread 2                                        |
+| ----------------------------------------------------------------------------- | ----------------------------------------------- |
+|                                                                               | `key_put` calls `refcount_dec_and_test`         |
+| `key_garbage_collector` runs, deleting the key since there are no references. |                                                 |
+|                                                                               | `key_put` accesses `key->flags` and `key->user` |
 
 
 # Exploitable?
 
-Consequence seems pretty limited
-More research is needed
+* Introduce a delay after `refcount_dec_and_test` to win more often
+* Can we reclaim the freed memory?
+  * Cross-cache attack?
+  * The code shows a custom memory cache, but doesn't appear in /proc/slabs
+* Somewhat controllable writes to `key->user`
+* More research is needed
+
+Err on the side of caution, fix the bug
 
 
-# Disclosure
+# Timeline
 
-Getting it fixed...
+* Commit introduced 2024-01-30
+* 2024-07-14 - ships in v6.10.0
+* 2024-08-10 - Detected by syzkaller
+* 2024-09-15 - ships in v6.11.0
+* 2024-11-17 - ships in v6.12.0
+* 2024-11-18 - C repro added to syzbot
+* 2025-01-20 - ships in v6.13.0
+* 2025-03-14 - I reported to security@kernel.org
 
-TODO: about how disclosure went
+Discussion ongoing, but no fix landed yet
+
+Once it lands it will take time to propagate...
 
 ---
 
@@ -603,7 +664,7 @@ Please throw more money at this problem space.
 3. Developer / Maintainer education
    * Encourage security training
    * Study commonly occurring classes of bugs
-   * Learn from bugs and exploits in kernelCTF
+   * Learn from published bugs and exploits
      * Fix recurring exploit techniques (cross-cache)
 4. Hire security staff!
 5. Prioritize fixing bugs from syzkaller
@@ -613,6 +674,7 @@ Please throw more money at this problem space.
 
 1. Only give access to those you trust
    * Thankfully multi-user systems are less common
+   * Be very careful which apps you install on Android
 2. Limit your attack surface
    * Try to minimize as much as possible!
        * virtual machines, SELinux, seccomp, containers, capabilities, permissions
@@ -620,13 +682,15 @@ Please throw more money at this problem space.
 
 # Conclusion
 
+## Kernel Org needs to improve security.
+
 * The Linux kernel is very complicated
   * Especially concurrency
 * Increased risk due to syzkaller and kernelCTF
   * Lowers the bar for attackers
 * Many improvements over the past 5-10 years
-* Ongoing efforts look promising
-* More progress is needed. Please help!
+  * Ongoing efforts look promising
+  * More progress is needed. Please help!
 
 ---
 
