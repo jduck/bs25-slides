@@ -2,9 +2,9 @@
 
 - Introduction
 - The Linux Foundation
-- Rust for Linux
 - Comparison with SDLC
 - Bug Case Study
+- Rust for Linux
 - Conclusion
 
 ---
@@ -14,6 +14,17 @@
 <div class="ctitle-line"></div>
 
 ## A bit of background
+
+
+## Disclaimer
+
+The information presented here is the result of off-and-on research over decades.
+
+I will try to be objective, but also share my opinions based on my experience.
+
+I have tried to make sure information is current.
+
+As always, I could have missed something.
 
 
 # About me
@@ -38,32 +49,21 @@ Previously:
 </div>
 
 
+## Background of Involvement
+
+1. User of Linux since 1995, steadily since
+   * Installed Linux (UMSDOS) early on my journey
+2. Vulnerability research and exploit development
+   * Reverse-engineered exploits, analyzed bugs
+3. Kernel chapter author in Android Hacker's Handbook.
+4. Developed tools and kernel patches, but never upstreamed
+
+
 ## Acknowledgments
 
 Tremendous thanks to all of the Linux kernel contributors, especially those working to secure Linux.
 
 Thanks to kees, ilja, roddux, all the awesome people from my workplace, family, and friends.
-
-
-## Background of Involvement
-
-1. User of Linux since 1993, steadily since
-2. Vulnerability research and exploit development
-   * Reverse-engineered exploits, analyzed bugs
-4. Kernel chapter author in Android Hacker's Handbook.
-
-No. I have never tried to upstream anything.
-
-
-## Disclaimer
-
-The information presented here is the result of off-and-on research over decades.
-
-I will try to be objective, but also share my opinions based on my experience.
-
-I have tried to make sure information is current.
-
-As always, I could have missed something.
 
 
 ## What is the Linux Kernel?
@@ -90,11 +90,11 @@ Raise your hand if... <br />
 1. Ubiquitous - on billions of devices
    * Supply chain attack risk
 2. Extremely large attack surface
+   * Security features are too!
 3. Complicated C codebase
+   * 23.5M - 40M LoC !
 4. Persistent and surreptitious access domain
    * Think sandbox escapes, rootkits...
-5. Security features - LSM (SELinux, SMACK, etc), crypto, fscrypt, keyring
-   * Can be attack surface too
 
 ---
 
@@ -113,8 +113,8 @@ Raise your hand if... <br />
 The Linux Foundation is a neutral, trusted hub for developers and organizations to code, manage, and scale open technology projects and ecosystems."
 </div>
 
-Revenue of 250+ million annually
-* Spends < 5 million on Kernel Org
+* Revenue of 250+ million annually
+  * Spends < 5 million on Kernel Org
 
 
 # Linux Foundation - Projects
@@ -128,19 +128,6 @@ Revenue of 250+ million annually
 * The Linux kernel is *ONE* of those.
 
 <img height="350px" src="/lib/img/projects-screeny.png" />
-
-
-# Linux Foundation - Research
-
-<div class="footnote">
-1. <a href="https://www.linuxfoundation.org/research">Linux Foundation Research - https://www.linuxfoundation.org/research </a><br />
-</div>
-
-<div class="site-quote">
-"LF Research publishes actionable and decision-useful insights into open source software, hardware, standards, and data based on empirical research methodologies. Through leveraging community networks, project databases, surveys, and qualitative findings, and through its commitment to best practices in primary research, Linux Foundation Research is the definitive home for data-driven insights into open source for the benefit of governments, enterprises, and society at large."
-</div>
-
-It's market research.
 
 
 # Linux Foundation - Training
@@ -182,81 +169,6 @@ We'll come back to Kernel CI...<br />
 ---
 
 <!-- .slide: class="ctitle" -->
-# Rust for Linux
-<div class="ctitle-line"></div>
-
-## Is it the future?
-
-
-## Rust for Linux - Drama?
-
-Lots of recent (and past) drama
-* Protesting Rust and multi-language codebases
-* Maintainers quitting
-* Removing selves from subsystems
-* Quitting social media
-
-The conspiracy theorist in me raises an eyebrow.
-
-<aside class="notes">
-One protest even occurred IRL during a conference talk!
-</aside>
-
-
-## Rust for Linux - Thoughts 1
-
-<div class="footnote">
-1. <a href="https://lore.kernel.org/rust-for-linux/2025021954-flaccid-pucker-f7d9@gregkh/">Greg-KH on Rust in Linux</a><br />
-<br />
-</div>
-
-- A challenging project needs good leaders!
-  - Greg KH is providing good leadership
-  - Linus is providing fair leadership
-- However, if you want Rust in your running kernel, use:
-  - Asahi Linux on your Mac
-  - Android (binder)
-
-AFAIK No Rust code in other shipping kernels
-
-:-/
-
-
-## Rust for Linux - Thoughts 2
-
-<div class="footnote">
-1. <a href="https://newsletter.pragmaticengineer.com/p/how-linux-is-built-with-greg-kroah">https://newsletter.pragmaticengineer.com/p/how-linux-is-built-with-greg-kroah</a><br />
-</div>
-
-- Rust is versatile (low-level *and* high-level)
-  - Greg thinks it would've eliminated 50% of past kernel bugs. I think more.
-- A focus on Rust bindings for Kernel C APIs
-  - Rust drivers use the bindings
-- Adoption status is minimal
-  - Currently 25,000 / 40,000,000 lines of code are Rust
-  - 0.0625%
-- Driving improvements in the C code!
-
-<aside class="notes">
-
-- Rust helps eliminate issues through its type system.
-- I think the Rust for Linux approach is understandable, but not ideal.
-</aside>
-
-
-## Rust for Linux - Final Thoughts
-
-- Alternatives like Redox OS's micro-kernel
-
-- Developer sentiment is a mixed bag
-
-- How can we accelerate Rust adoption in Linux?
-
-- Would it be better to fork?
-
----
-
-<!-- .slide: class="ctitle" -->
 # Linux Kernel SDLC
 <div class="ctitle-line"></div>
 
@@ -286,25 +198,28 @@ Secure (Software) Development Life Cycle
 2. <a href="https://www.linuxfoundation.org/blog/blog/role-of-a-linux-kernel-maintainer">https://www.linuxfoundation.org/blog/blog/role-of-a-linux-kernel-maintainer</a><br />
 </div>
 
-* Decentralized model
 * Maintainers all the way down
   * Tree maintainers
   * Subsystem maintainers
   * Driver/feature maintainers
+* Decentralized model
+  * Varied ownership and practices
+  * Often along maintainer lines
 * 80% of developers work on Linux for their employer
 * A handful employed by Kernel Org project (guess who)
 
 
 # Linux Development Model II
 
+<div class="footnote">
+1. <a href="https://newsletter.pragmaticengineer.com/p/how-linux-is-built-with-greg-kroah">https://newsletter.pragmaticengineer.com/p/how-linux-is-built-with-greg-kroah</a><br />
+</div>
+
 * Regular release cadence
   * "next", "stable", etc
   * 2 week merge window
   * 7 week regression period (RC)
 * Key metrics are number of contributors and LoC
-* An organization of source trees
-  * Varied ownership and practices
-  * Often along maintainer lines
 * Security knowledge is deprioritized
 
 
@@ -359,7 +274,7 @@ These are all ran by Google!
   * Does it boot? Does my thing work?
   * Done by developers, maintainers, etc.
 
-Looks like a lot, but really isn't.
+Looks like a lot, but really isn't security...
 
 
 # Linux Kernel CI (I)
@@ -391,15 +306,11 @@ Looks like a lot, but really isn't.
 2. <a href="https://youtu.be/Gi298Frere0">Mentorship Session: KernelCI: Travel Guide 2024</a><br />
 </div>
 
-Two great talks from people from the KernelCI project.
-
-<div class="site-quote">
-
-* "testing happens in a separate space from development" Guillaume Tucker (@ 59:31)
-</div>
-
-I think there's room for improvement in testing and CI.
-* For example, code coverage is a WIP
+* Two great talks from people from the KernelCI project.
+  * <div class="site-quote">"testing happens in a separate space from development" Guillaume Tucker (@ 59:31)</div>
+  * No blocking criteria!
+* I think there's room for improvement in testing/CI.
+  * For example, code coverage is a WIP
 
 There is a new dashboard and cli tooling!!
 
@@ -413,16 +324,18 @@ This project has a lot of potential!
 </div>
 
 * Old mantra: "Security problems are just bugs"
-* Linux Kernel became a CNA!
-  * Now: All bugs are security bugs and CVEs are assigned to everything.
+* Lots of top-notch public vulnerability research
+  * Are any kernel developers studying these??
 
-Lots of top-notch public vulnerability research
-* Are any kernel developers studying these??
+There's a reason we treat security bugs differently!
+* Linux Kernel became a CNA in Feb 2024!
+  * All bugs are security bugs and get CVEs
+  * Surely we can do better.
 
-There's a reason we treat security bugs differently.
+Still, that's progress.
 
 
-# Kernel CTF
+# Bounties? Kernel CTF
 
 <div class="footnote">
 1. <a href="https://google.github.io/security-research/kernelctf/rules.html">https://google.github.io/security-research/kernelctf/rules.html</a><br />
@@ -510,28 +423,12 @@ This project increases public risk.
 * Quasi-public. Anyone can sign up!
   * 128 members currently
 * Defect density - number of bugs per thousand lines
-  * Many outstanding "defects"
+  * Many outstanding "defects" (~33k)
     * Coverity has a lot of false positives.
 
 <div class="about-logos">
 <img height="300px" src="/lib/img/linux-coverity.png" />
 </div>
-
-
-# Other Tools
-
-<div class="footnote">
-1. <a href="https://coccinelle.gitlabpages.inria.fr/website/impact_linux.html">https://coccinelle.gitlabpages.inria.fr/website/impact_linux.html</a><br />
-2. <a href="https://github.com/a13xp0p0v/kernel-hardening-checker">https://github.com/a13xp0p0v/kernel-hardening-checker</a><br />
-</div>
-
-* Coccinelle Code transformation tool
-  * For fixing bug patterns
-* Smatch static checker by Dan Carpenter
-* Linux Kernel Hardening Checker by Alexander Popov
-  * Also Linux Defence Map and other tools
-* grsecurity
-  * Commercial kernel by OSS Inc
 
 ---
 
@@ -625,6 +522,10 @@ Err on the side of caution, fix the bug
 
 # Timeline
 
+<div class="footnote">
+1. <a href="https://lore.kernel.org/lkml/Z9w-10St-WYpSnKC@kernel.org/T/">https://lore.kernel.org/lkml/Z9w-10St-WYpSnKC@kernel.org/T/</a><br />
+</div>
+
 * Commit introduced 2024-01-30
 * 2024-07-14 - ships in v6.10.0
 * 2024-08-10 - Detected by syzkaller
@@ -634,9 +535,71 @@ Err on the side of caution, fix the bug
 * 2025-01-20 - ships in v6.13.0
 * 2025-03-14 - I reported to security@kernel.org
 
-Discussion ongoing, but no fix landed yet
+Discussion ongoing [1], but no fix landed yet
 
-Once it lands it will take time to propagate...
+---
+
+<!-- .slide: class="ctitle" -->
+# Rust for Linux
+<div class="ctitle-line"></div>
+
+## Is it the future?
+
+
+## Rust for Linux - The Ugly
+
+Lots of recent (and past) drama
+* Protesting Rust and multi-language codebases
+* Maintainers quitting
+* Removing selves from subsystems
+* Quitting social media
+
+The conspiracy theorist in me gives side eye.
+
+<aside class="notes">
+One protest even occurred IRL during a conference talk!
+</aside>
+
+
+## Rust for Linux - The Bad
+
+<div class="footnote">
+1. <a href="https://newsletter.pragmaticengineer.com/p/how-linux-is-built-with-greg-kroah">https://newsletter.pragmaticengineer.com/p/how-linux-is-built-with-greg-kroah</a><br />
+</div>
+
+- Adoption status is minimal
+  - Currently 25,000 / 40,000,000 lines of code are Rust
+  - 0.0625%
+- If you want Rust in your running kernel, use:
+  - Asahi Linux on your Mac
+  - Android (binder)
+
+AFAIK No Rust code in other shipping kernels
+
+:-/
+
+
+## Rust for Linux - The Good
+
+<div class="footnote">
+1. <a href="https://lore.kernel.org/rust-for-linux/2025021954-flaccid-pucker-f7d9@gregkh/">Greg-KH on Rust in Linux</a><br />
+<br />
+</div>
+
+- A challenging project needs good leaders!
+  - Greg KH is providing good leadership
+  - Linus is providing fair leadership
+- Rust is versatile (low-level *and* high-level)
+  - Greg thinks it would've eliminated 50% of past kernel bugs. I think more.
+- A focus on Rust bindings for Kernel C APIs
+  - Rust drivers use the bindings
+  - Driving improvements in the C code!
+
+<aside class="notes">
+
+- Rust helps eliminate issues through its type system.
+- I think the Rust for Linux approach is understandable, but not ideal.
+</aside>
 
 ---
 
@@ -690,20 +653,10 @@ Please throw more money at this problem space.
   * Especially concurrency
 * **Increased public risk due to syzkaller + kernelCTF**
   * Lowers the bar for attackers
-* Many improvements over the past 5-10 years
-  * Ongoing efforts look promising
+  * Mitigations have limited effectiveness :-/
+* Many improvements over the past 5-10 years (KSPP)
+  * Ongoing efforts look promising (KernelCI)
   * More progress is needed. Send help!
-
-
-# Flaws in Linux are Complicated
-
-Checkout out Kees's talk from BSides PDX!
-
-Teaser:
-
-<div class="about-logos">
-<img height="500px" src="/lib/img/kees-venn-diagram.png" />
-</div>
 
 ---
 
@@ -718,6 +671,65 @@ Joshua J. Drake<br />
 jduck on the Internet<br />
 <a href="https://jduck.me/">https://jduck.me/</a>
 </div>
+
+---
+
+<!-- .slide: class="ctitle" -->
+# Extra Slides
+<div class="ctitle-line"></div>
+
+## More stuff, removed for time
+
+
+# Linux Foundation - Research
+
+<div class="footnote">
+1. <a href="https://www.linuxfoundation.org/research">Linux Foundation Research - https://www.linuxfoundation.org/research </a><br />
+</div>
+
+<div class="site-quote">
+"LF Research publishes actionable and decision-useful insights into open source software, hardware, standards, and data based on empirical research methodologies. Through leveraging community networks, project databases, surveys, and qualitative findings, and through its commitment to best practices in primary research, Linux Foundation Research is the definitive home for data-driven insights into open source for the benefit of governments, enterprises, and society at large."
+</div>
+
+It's market research.
+
+
+# Flaws in Linux are Complicated
+
+Checkout out Kees's talk from BSides PDX!
+
+Teaser:
+
+<div class="about-logos">
+<img height="500px" src="/lib/img/kees-venn-diagram.png" />
+</div>
+
+
+# Other Tools
+
+<div class="footnote">
+1. <a href="https://coccinelle.gitlabpages.inria.fr/website/impact_linux.html">https://coccinelle.gitlabpages.inria.fr/website/impact_linux.html</a><br />
+2. <a href="https://github.com/a13xp0p0v/kernel-hardening-checker">https://github.com/a13xp0p0v/kernel-hardening-checker</a><br />
+</div>
+
+* Coccinelle Code transformation tool
+  * For fixing bug patterns
+* Smatch static checker by Dan Carpenter
+* Linux Kernel Hardening Checker by Alexander Popov
+  * Also Linux Defence Map and other tools
+* grsecurity
+  * Commercial kernel by OSS Inc
+
+
+## Rust for Linux - Final Thoughts
+
+- Alternatives like Redox OS's micro-kernel
+
+- Developer sentiment is a mixed bag
+
+- How can we accelerate Rust adoption in Linux?
+
+- Would it be better to fork?
 
 ---
 
