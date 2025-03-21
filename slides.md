@@ -686,11 +686,22 @@ Please throw more money at this problem space.
 
 * The Linux kernel is very complicated
   * Especially concurrency
-* Increased risk due to syzkaller and kernelCTF
+* **Increased public risk due to syzkaller + kernelCTF**
   * Lowers the bar for attackers
 * Many improvements over the past 5-10 years
   * Ongoing efforts look promising
   * More progress is needed. Please help!
+
+
+# Flaws in Linux are Complicated
+
+Checkout out Kees's talk from BSides PDX!
+
+Teaser:
+
+<div class="about-logos">
+<img height="500px" src="/lib/img/kees-venn-diagram.png" />
+</div>
 
 ---
 
