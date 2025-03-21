@@ -286,6 +286,7 @@ Secure (Software) Development Life Cycle
 2. <a href="https://www.linuxfoundation.org/blog/blog/role-of-a-linux-kernel-maintainer">https://www.linuxfoundation.org/blog/blog/role-of-a-linux-kernel-maintainer</a><br />
 </div>
 
+* Decentralized model
 * Maintainers all the way down
   * Tree maintainers
   * Subsystem maintainers
@@ -317,6 +318,7 @@ Secure (Software) Development Life Cycle
 * I am not aware of a Linux Kernel threat model.
 * A couple of threat models for parts of the kernel
   - confidential computing and eBPF
+  - development / infrastructure
 
 I think this should change.
 
@@ -332,7 +334,7 @@ I think this should change.
 1. Kernel Self-Protection Project (KSPP)
     1. Founded in response to grsec going commerical
     2. Upstream meaningful patches to improve security
-       * KASLR, etc
+       * KASLR, UAF, flexible arrays, `counted_by`, etc
     3. kernel-hardening mailing list
 2. syzkaller - more later
 3. kernelCTF - more later
@@ -690,7 +692,7 @@ Please throw more money at this problem space.
   * Lowers the bar for attackers
 * Many improvements over the past 5-10 years
   * Ongoing efforts look promising
-  * More progress is needed. Please help!
+  * More progress is needed. Send help!
 
 
 # Flaws in Linux are Complicated
