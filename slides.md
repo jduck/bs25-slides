@@ -247,10 +247,10 @@ I think this should change.
 **Most** kernel security efforts are **community projects**.
 
 1. Kernel Self-Protection Project (KSPP)
-    1. Founded in response to grsec going commerical
+    1. Founded to port grsec improvements to mainline
     2. Upstream meaningful patches to improve security
        * KASLR, UAF, flexible arrays, `counted_by`, etc
-    3. kernel-hardening mailing list
+    3. {linux,kernel}-hardening mailing list
 2. syzkaller - more later
 3. kernelCTF - more later
 
