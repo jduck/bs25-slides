@@ -1,50 +1,13 @@
-<p align="center">
-  <a href="https://revealjs.com">
-  <img src="https://hakim-static.s3.amazonaws.com/reveal-js/logo/v1/reveal-black-text-sticker.png" alt="reveal.js" width="500">
-  </a>
-  <br><br>
-  <a href="https://github.com/hakimel/reveal.js/actions"><img src="https://github.com/hakimel/reveal.js/workflows/tests/badge.svg"></a>
-  <a href="https://slides.com/"><img src="https://s3.amazonaws.com/static.slid.es/images/slides-github-banner-320x40.png?1" alt="Slides" width="160" height="20"></a>
-</p>
+# Musing from Decades of Linux Kernel Security Research
 
-reveal.js is an open source HTML presentation framework. It enables anyone with a web browser to create beautiful presentations for free. Check out the live demo at [revealjs.com](https://revealjs.com/).
+Previous draft title: Is the Linux Kernel Secure Yet?
+Musings from decades of off-and-on Linux Kernel security research...
 
-The framework comes with a powerful feature set including [nested slides](https://revealjs.com/vertical-slides/), [Markdown support](https://revealjs.com/markdown/), [Auto-Animate](https://revealjs.com/auto-animate/), [PDF export](https://revealjs.com/pdf-export/), [speaker notes](https://revealjs.com/speaker-view/), [LaTeX typesetting](https://revealjs.com/math/), [syntax highlighted code](https://revealjs.com/code/) and an [extensive API](https://revealjs.com/api/).
+## Abstract
 
----
+## Abstract
+The Linux Kernel underpins billions of modern computers and devices ranging across almost every industry. Arguably, its ubiquity places it firmly into the category of critical infrastructure. But, is it secure? In this presentation, Josh will explore this question in detail. He compares and contrasts the security investments being made within the Linux Kernel developer ecosystem with a typical software development life cycle used in a professional development organization. Additionally, he will share a case study of a public and widely exposed security issue that remains unfixed. Finally, he will make recommendations that can reduce the risk posed by running the Linux Kernel.
 
-Want to create reveal.js presentation in a graphical editor? Try <https://slides.com>. It's made by the same people behind reveal.js.
+## Bio
+Joshua "jduck" Drake is the Principal Security Researcher at Delphos Labs. He is a software developer, vulnerability researcher, reverse engineer, author, and public speaker with over 15 years of professional experience. He focused a majority of his career in the software space where he discovered, analyzed, and/or developed exploits for hundreds of security problems. jduck spent a decade focused on Android security (2011 to 2021). During that time, he took the lead on authoring the "Android Hacker's Handbook" and bringing the "Stagefright Vulnerabilities" to the public eye. Nowadays, jduck is researching the application of AI to reverse engineering and vulnerability discovery within binaries. When time permits, he likes to participate in Capture the Flag events and spend time with his family and friends.
 
----
-
-### Sponsors
-Hakim's open source work is supported by <a href="https://github.com/sponsors/hakimel">GitHub sponsors</a>. Special thanks to:
-<div align="center">
-  <table>
-    <td align="center">
-      <a href="https://workos.com/?utm_campaign=github_repo&utm_medium=referral&utm_content=revealjs&utm_source=github">
-        <div>
-          <img src="https://user-images.githubusercontent.com/629429/151508669-efb4c3b3-8fe3-45eb-8e47-e9510b5f0af1.svg" width="290" alt="WorkOS">
-        </div>
-        <b>Your app, enterprise-ready.</b>
-        <div>
-          <sub>Start selling to enterprise customers with just a few lines of code. Add Single Sign-On (and more) in minutes instead of months.</sup>
-        </div>
-      </a>
-    </td>
-  </table>
-</div>
-
----
-
-### Getting started
-- 🚀 [Install reveal.js](https://revealjs.com/installation)
-- 👀 [View the demo presentation](https://revealjs.com/demo)
-- 📖 [Read the documentation](https://revealjs.com/markup/)
-- 🖌 [Try the visual editor for reveal.js at Slides.com](https://slides.com/)
-- 🎬 [Watch the reveal.js video course (paid)](https://revealjs.com/course)
-
---- 
-<div align="center">
-  MIT licensed | Copyright © 2011-2024 Hakim El Hattab, https://hakim.se
-</div>
